@@ -2,7 +2,12 @@ core.Microsoft*
 core.mongo*
 core.python*
 env.py
+.env
 __pycache__/
 *.py[cod]
 node_modules/
 .github/
+
+# env
+
+book-rental/
