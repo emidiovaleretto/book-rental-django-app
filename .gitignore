@@ -9,3 +9,4 @@ node_modules/
 .github/
 book-rental/
 *.sqlite3
+media/
