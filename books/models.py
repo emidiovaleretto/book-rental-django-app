@@ -39,6 +39,13 @@ class Book(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    def generate_book_id(self):
+        """
+        Generate a unique book ID
+        """
+        self.book_id = str(uuid.uuid4()).replace('-', '')[:24].lower()
+        return self.book_id
+
     def generate_qrcode(self):
         """
         Generate a QR Code for the book_id
@@ -59,9 +66,10 @@ class Book(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.book_id:
-            self.book_id = str(uuid.uuid4()).replace('-', '')[:24].lower()
+            self.generate_book_id()
 
-        self.generate_qrcode()
+        if not self.qr_code:
+            self.generate_qrcode()
 
         super().save(*args, **kwargs)
 
