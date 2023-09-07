@@ -7,7 +7,5 @@ __pycache__/
 *.py[cod]
 node_modules/
 .github/
-
-# env
-
 book-rental/
+*.sqlite3
