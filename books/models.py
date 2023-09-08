@@ -22,7 +22,7 @@ class BookTitle(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f'"{self.title}" by {self.authors}'
+        return self.title
     
     def save(self, *args, **kwargs):
         if not self.slug:
