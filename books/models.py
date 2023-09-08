@@ -32,29 +32,29 @@ class BookTitle(models.Model):
 
 
 class Book(models.Model):
-    book_id = models.CharField(max_length=24, blank=True)
+    isbn = models.CharField(max_length=24, blank=True)
     title = models.ForeignKey(BookTitle, on_delete=models.CASCADE)
     publisher = models.ForeignKey(Publishers, on_delete=models.CASCADE)
     qr_code = models.ImageField(upload_to='qr_codes', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    def generate_book_id(self):
+    def generate_isbn(self):
         """
         Generate a unique book ID
         """
-        self.book_id = str(uuid.uuid4()).replace('-', '')[:24].lower()
-        return self.book_id
+        self.isbn = str(uuid.uuid4()).replace('-', '')[:24].lower()
+        return self.isbn
 
     def generate_qrcode(self):
         """
-        Generate a QR Code for the book_id
+        Generate a QR Code for the isbn
         """
-        qrcode_img = qrcode.make(self.book_id)
+        qrcode_img = qrcode.make(self.isbn)
         canvas = Image.new('RGB', (qrcode_img.pixel_size, qrcode_img.pixel_size), 'white')
         canvas.paste(qrcode_img)
 
-        fname = f'qr_code-{str(self.title).lower()}.png'
+        fname = f'qr_code-{str(self.isbn).lower()}.png'
         buffer = BytesIO()
 
         canvas.save(buffer, 'PNG')
@@ -65,8 +65,8 @@ class Book(models.Model):
 
 
     def save(self, *args, **kwargs):
-        if not self.book_id:
-            self.generate_book_id()
+        if not self.isbn:
+            self.generate_isbn()
 
         if not self.qr_code:
             self.generate_qrcode()
