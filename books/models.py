@@ -33,7 +33,7 @@ class BookTitle(models.Model):
 
 class Book(models.Model):
     isbn = models.CharField(max_length=24, blank=True)
-    title = models.ForeignKey(BookTitle, on_delete=models.CASCADE)
+    title = models.ForeignKey(BookTitle, on_delete=models.CASCADE, related_name='books')
     publisher = models.ForeignKey(Publishers, on_delete=models.CASCADE)
     qr_code = models.ImageField(upload_to='qr_codes', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
