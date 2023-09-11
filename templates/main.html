@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+
+    <h1>Hello, world!</h1>
+
+    <p>Here are all the customers:</p>
+
+    <ul>
+        {% if customers %}
+            {% for customer in customers %}
+                <li>{{ customer.first_name }} {{ customer.last_name }}</li>
+            {% endfor %}
+        {% else %}
+            <li>There are no customers.</li>
+        {% endif %}
+    </ul>
+
+    <p>Here are all the books:</p>
+
+    <ul>
+        {% if books %}
+            {% for book in books %}
+                <li>{{ book.title }} by {{ book.publisher }}</li>
+            {% endfor %}
+        {% else %}
+            <li>There are no books.</li>
+        {% endif %}
+    </ul>
+    
+    {{ title }} by {{ publisher }}
+    <br>
+    <strong>{{ book.isbn }}</strong>
+
+{% endblock content %}
