@@ -21,6 +21,13 @@ class BookTitle(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    @property
+    def books(self):
+        return self.get_books()
+
+    def get_books(self):
+        return self.my_books.all()
+
     def __str__(self):
         return self.title
     
@@ -30,10 +37,9 @@ class BookTitle(models.Model):
         super().save(*args, **kwargs)
 
 
-
 class Book(models.Model):
     isbn = models.CharField(max_length=24, blank=True)
-    title = models.ForeignKey(BookTitle, on_delete=models.CASCADE, related_name='books')
+    title = models.ForeignKey(BookTitle, on_delete=models.CASCADE, related_name='my_books')
     publisher = models.ForeignKey(Publishers, on_delete=models.CASCADE)
     qr_code = models.ImageField(upload_to='qr_codes', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
