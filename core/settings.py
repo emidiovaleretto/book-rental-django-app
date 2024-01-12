@@ -18,11 +18,12 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'https://redesigned-meme-9576q49645q3p479-8000.app.github.dev/',
+    '8000-emidiovaler-bookrentald-oai98xalhy3.ws-eu107.gitpod.io',
     'localhost'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
+    'https://8000-emidiovaler-bookrentald-oai98xalhy3.ws-eu107.gitpod.io',
     'https://localhost:8000'
 ]
 
@@ -44,7 +45,7 @@ INSTALLED_APPS = [
     "rentals",
 
     # Third party apps
-    "django_countries"
+    "django_countries",
 ]
 
 MIDDLEWARE = [
