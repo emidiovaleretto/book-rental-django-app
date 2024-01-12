@@ -17,5 +17,5 @@
 {% else %}
     <p>There are no books in the database.</p>
 {% endif %}
-
+<a href="{% url 'book_title_list_view' %}">Go back</a>
 {% endblock content %}
