@@ -46,6 +46,17 @@ INSTALLED_APPS = [
 
     # Third party apps
     "django_countries",
+    "tailwind",
+    "theme",
+    "django_browser_reload",
+]
+
+# Tailwind config 
+TAILWIND_APP_NAME = 'theme'
+
+INTERNAL_IPS = [
+    "8000-emidiovaler-bookrentald-oai98xalhy3.ws-eu107.gitpod.io",
+    "localhost",
 ]
 
 MIDDLEWARE = [
@@ -56,6 +67,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
 
 ROOT_URLCONF = "core.urls"
