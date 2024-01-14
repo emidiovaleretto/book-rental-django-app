@@ -802,9 +802,9 @@ select {
   justify-content: center;
 }
 
-.bg-gray-50 {
+.bg-slate-900 {
   --tw-bg-opacity: 1;
-  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+  background-color: rgb(15 23 42 / var(--tw-bg-opacity));
 }
 
 .font-serif {
@@ -822,4 +822,9 @@ select {
 
 .tracking-normal {
   letter-spacing: 0em;
+}
+
+.text-gray-100 {
+  --tw-text-opacity: 1;
+  color: rgb(243 244 246 / var(--tw-text-opacity));
 }
