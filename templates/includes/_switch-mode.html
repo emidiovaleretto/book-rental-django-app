@@ -1,0 +1,9 @@
+<button
+  type="button"
+  id="btn-switch"
+  class="fixed top-[150px] right-0 p-3 bg-slate-200 text-slate-900 rounded-l-lg z-10 dark:bg-yellow-300"
+>
+  <i
+    class="fa-solid {% if request.session.is_dark_mode %}fa-sun{% else %}fa-moon{% endif %}"
+  ></i>
+</button>
