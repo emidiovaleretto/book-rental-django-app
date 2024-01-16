@@ -1,13 +1,12 @@
 from django.shortcuts import render
+from django.views.generic import ListView
 from .models import BookTitle, Book
 
 
-def book_title_list_view(request):
-    queryset = BookTitle.objects.all()
-    context = {
-        'books': queryset
-    }
-    return render(request, 'books/main.html', context=context)
+class BookTitleListView(ListView):
+    model = BookTitle
+    context_object_name = "books"
+    
 
 def book_title_detail_view(request, pk):
     obj = BookTitle.objects.get(pk=pk)
