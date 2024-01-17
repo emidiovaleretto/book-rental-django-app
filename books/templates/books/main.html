@@ -6,6 +6,11 @@
 
 <h1>Book Title list</h1>
 
+<form action="" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit" class="px-3 py-2 bg-blue-500 text-white rounded-md">Send</button>
+</form>
 <ul>
     {% if books %}
         {% for book in books %}
