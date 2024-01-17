@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load widget_tweaks %}
 
 {% block extra_title %}Book Title list{% endblock %}
 
@@ -8,7 +9,33 @@
 
 <form action="" method="post">
     {% csrf_token %}
-    {{form.as_p}}
+    <div class="mb-2">
+        <label for="{{form.title.id_for_label}}" class="block font-bold">Title</label>
+        {{form.title|add_class:'bg-slate-100 dark:bg-slate-200 rounded-md w-full'}}
+        {% if form.title.errors %}
+            {% for error in form.title.errors %}
+                <p class="my-1 text-red-500 font-semibold text-sm">{{ error }}</p>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <div class="mb-2">
+        <label for="{{form.authors.id_for_label}}" class="block font-bold">Author</label>
+        {{form.authors|add_class:'bg-slate-100 dark:bg-slate-200 rounded-md w-full'}}
+        {% if form.authors.errors %}
+            {% for error in form.authors.errors %}
+                <p class="my-1 text-red-500 font-semibold text-sm">{{ error }}</p>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <div class="mb-2">
+        <label for="{{form.publisher.id_for_label}}" class="block font-bold">Publisher</label>
+        {{form.publisher|add_class:'bg-slate-100 dark:bg-slate-200 rounded-md w-full'}}
+        {% if form.publisher.errors %}
+            {% for error in form.publisher.errors %}
+                <p class="my-1 text-red-500 font-semibold text-sm">{{ error }}</p>
+            {% endfor %}
+        {% endif %}
+    </div>
     <button type="submit" class="px-3 py-2 bg-blue-500 text-white rounded-md">Send</button>
 </form>
 <ul>
