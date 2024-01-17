@@ -1,19 +1,17 @@
 {% extends "base.html" %}
 
-{% block title %}Book Title details{% endblock title %}
+{% block extra_title %}Book Title details{% endblock %}
 
 {% block content %}
 
 <h1>Book Title details</h1>
 
-{% if books %}
-    {% for book in books %}
-        <p>Book Title: {{ book.title }}</p>
-        <p>Book Author: {{ obj.authors }}</p>
-        <p>Book ISBN: {{ book.isbn }}</p>
-        <p>Book Publisher: {{ book.publisher }}</p>
-        <img src="{{ book.qr_code.url }}" alt="Book Image">
-    {% endfor %}
+{% if book %}
+    <p>Book Title: {{ book.title }}</p>
+    <p>Book Author: {{ book.authors }}</p>
+    <p>Book ISBN: {{ book.isbn }}</p>
+    <p>Book Publisher: {{ book.publisher }}</p>
+    <img src="{{ book.qr_code.url }}" alt="Book Image">
 {% else %}
     <p>There are no books in the database.</p>
 {% endif %}
