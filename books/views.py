@@ -1,13 +1,22 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, FormView
 from .models import BookTitle, Book
+from .forms import BookTitleForm
 
 
-class BookTitleListView(ListView):
+class BookTitleListView(FormView, ListView):
     model = BookTitle
     context_object_name = "books"
     template_name = "books/main.html"
     ordering = ('-created_at',)
+    form_class = BookTitleForm
+
+    def get_success_url(self):
+        return self.request.path
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
 
 
 class BookTitleDetailView(DetailView):
